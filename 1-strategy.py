@@ -1,9 +1,13 @@
-class IBehavior:
+from abc import ABC, abstractmethod
+
+
+class IBehavior(ABC):
     pass
 
 # flying behaviors
 
-class IFlyBehavior(IBehavior):
+class IFlyBehavior(IBehavior, ABC):
+    @abstractmethod
     def fly(self):
         pass
 
@@ -17,7 +21,8 @@ class IJetFlying(IFlyBehavior):
 
 # quack behabiors
 
-class IQuackBehavior(IBehavior):
+class IQuackBehavior(IBehavior, ABC):
+    @abstractmethod
     def quack(self):
         pass
 
@@ -31,7 +36,7 @@ class ILoudQuacking(IQuackBehavior):
 
 # client class
 
-class Duck:
+class Duck(ABC):
 
     def __init__(self, name, fly_behavior, quack_behavior):
         self.name = name
